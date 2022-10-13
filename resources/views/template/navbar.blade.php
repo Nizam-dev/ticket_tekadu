@@ -79,17 +79,17 @@
                     <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown"
                         aria-expanded="false">
                         <div class="nav-profile-img">
-                            <img src="{{asset('public/template/assets/images/faces-clipart/pic-4.png')}}">
+                            <img src="{{asset('public/image/avatar/'.auth()->user()->foto)}}">
                         </div>
                         <div class="nav-profile-text">
-                            <p class="mb-1 text-black">Henry Klein</p>
+                            <p class="mb-1 text-black"> {{auth()->user()->name}} </p>
                         </div>
                     </a>
                     <div class="dropdown-menu navbar-dropdown dropdown-menu-right p-0 border-0 font-size-sm"
                         aria-labelledby="profileDropdown" data-x-placement="bottom-end">
                         <div class="p-3 text-center bg-primary">
                             <img class="img-avatar img-avatar48 img-avatar-thumb"
-                                src="assets/images/faces/face28.png" alt="">
+                                src="{{asset('public/image/avatar/'.auth()->user()->foto)}}" alt="">
                         </div>
                         <div class="p-2">
                             
@@ -104,10 +104,14 @@
                             <div role="separator" class="dropdown-divider"></div>
                           
                             <a class="dropdown-item py-1 d-flex align-items-center justify-content-between"
-                                href="#">
+                            href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
                                 <span>Log Out</span>
                                 <i class="mdi mdi-logout ml-1"></i>
                             </a>
+
                         </div>
                     </div>
                 </li>

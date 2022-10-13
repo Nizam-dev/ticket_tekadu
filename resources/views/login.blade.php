@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Connect Plus</title>
+    <title>Tekadu</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{asset('public/template/assets/vendors/mdi/css/materialdesignicons.min.css')}}">
     <link rel="stylesheet" href="{{asset('public/template/assets/vendors/flag-icon-css/css/flag-icon.min.css')}}">
@@ -17,7 +17,9 @@
     <!-- Layout styles -->
     <link rel="stylesheet" href="{{asset('public/template/assets/css/style.css')}}">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="../../assets/images/favicon.png" />
+    <link rel="shortcut icon" href="{{asset('public/image/logo/logo-mini.png')}}" />
+  <link rel="stylesheet" href="{{asset('public/template/assets/css/notify.css')}}">
+
   </head>
   <body>
     <div class="container-scroller">
@@ -31,15 +33,16 @@
                 </div>
                 <h4>Hello! let's get started</h4>
                 <h6 class="font-weight-light">Sign in to continue.</h6>
-                <form class="pt-3">
+                <form class="pt-3" method="post" action="{{url('login')}}">
+                  @csrf
                   <div class="form-group">
-                    <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username">
+                    <input type="email" name="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email" required>
                   </div>
                   <div class="form-group">
-                    <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
+                    <input type="password" name="password" value="{{old('email')}}" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password" required>
                   </div>
                   <div class="mt-3">
-                    <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="../../index.html">SIGN IN</a>
+                    <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" >SIGN IN</btton>
                   </div>
                   <div class="my-2 d-flex justify-content-between align-items-center">
                     <div class="form-check">
@@ -69,6 +72,19 @@
     <script src="{{asset('public/template/assets/js/off-canvas.js')}}"></script>
     <script src="{{asset('public/template/assets/js/hoverable-collapse.js')}}"></script>
     <script src="{{asset('public/template/assets/js/misc.js')}}"></script>
+    <script src="{{asset('public/template/assets/js/jquery.notify.js')}}"></script>
+
     <!-- endinject -->
+    @if(session()-> has("failed"))
+    <script>
+        $.notify({
+            title: '<i  class="mdi  mdi mdi-check text-danger"> Gagal </i>',
+            content: '{{session()->get("failed")}}',
+            timeout: 3000,
+        });
+    </script>
+  @endif
+
+
   </body>
 </html>

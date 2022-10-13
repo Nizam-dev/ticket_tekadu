@@ -19,6 +19,8 @@
 
 <link rel="stylesheet" href="{{asset('public/template/assets/clockpicker/src/clockpicker.css')}}">
 
+<link rel="stylesheet" href="{{asset('public/template/assets/datepicker/css/bootstrap-datepicker.min.css')}}">
 
+<link rel="stylesheet" href="{{asset('public/template/assets/css/bootstrap-select.css')}}" />
 
 @yield('css')

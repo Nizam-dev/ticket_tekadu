@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\User;
 
 class CreateUsersTable extends Migration
 {
@@ -19,9 +20,24 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('no_hp')->nullable();
+            $table->string('alamat')->nullable();
+            $table->string('kota')->nullable();
+            $table->string('instansi')->nullable();
+            $table->string('foto')->nullable()->default('profil-default.png');
+            $table->string('nama_vendor')->nullable();
+            $table->string('role');
             $table->rememberToken();
             $table->timestamps();
         });
+
+        User::create([
+            'name' => 'admin',
+            'email' => 'admin@tekadu.id',
+            'password' => bcrypt('admintekadu123'),
+            'role' => 'admin'
+        ]);
+
     }
 
     /**

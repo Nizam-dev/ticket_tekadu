@@ -21,8 +21,38 @@
 <script src="{{asset('public/template/assets/clockpicker/src/clockpicker.js')}}"></script>
 <script src="{{asset('public/template/assets/js/html5qrcode.js')}}" type="text/javascript"></script>
 
+<script src="{{asset('public/template/assets/datepicker/js/bootstrap-datepicker.min.js')}}"></script>
+<script src="{{asset('public/template/assets/datepicker/locales/bootstrap-datepicker.id.min.js')}}"></script>
+
+<script src="{{asset('public/template/assets/js/bootstrap-select.min.js')}}"></script>
+<script src="{{asset('public/template/assets/js/axios.min.js')}}"></script>
+
+@if(session()-> has('success'))
+    <script>
+        $.notify({
+            title: '<i  class="mdi  mdi mdi-check text-success"> Success </i>',
+            content: '{{session()->get("success")}}',
+            timeout: 3000,
+        });
+    </script>
+@elseif(session()-> has('failed'))
+    <script>
+        $.notify({
+            title: '<i  class="mdi mdi mdi-window-close text-danger"> Failed </i>',
+            content: '{{session()->get("failed")}}',
+            timeout: 3000,
+        });
+    </script>
+@endif
+
 
 <script>
+
+$(document).ready(()=>{
+    $('.datepicker').datepicker({
+        format: 'dd/mm/yyyy'
+    });
+})
 
 function validateForm(el){
     let form = el
@@ -40,7 +70,7 @@ function validateForm(el){
 function resetvalidateForm(el){
     let form = el
     $(el).find(".is-invalid").removeClass("is-invalid")
-    $(el).find("input").val("")
+    $(el).find("input:not([type='hidden'])").val("")
     $(el).find("textarea").val("")
 }
 

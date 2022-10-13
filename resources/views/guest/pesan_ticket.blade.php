@@ -1,250 +1,354 @@
 @extends('template-landingpage.master')
 
 @section('css')
-<link rel="stylesheet" href="{{asset('public/coloshop/plugins/themify-icons/themify-icons.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('public/coloshop/plugins/jquery-ui-1.12.1.custom/jquery-ui.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('public/coloshop/styles/single_styles.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('public/coloshop/styles/single_responsive.css')}}">
+
+<link href="{{asset('public/karma-master/css/select2.min.css')}}" rel="stylesheet" />
+<style>
+    .jenis_container input[type='radio'] {
+        display: none;
+    }
+
+    .jenis_container label {
+        position: relative;
+        color: #01cc65;
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px;
+        border: 2px solid #01cc65;
+        border-radius: 5px;
+        padding: 2px 5px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+    }
+
+
+    .jenis_container label:before {
+        content: '';
+        height: 10px;
+        width: 10px;
+        border: 1px solid #01cc65;
+        border-radius: 50%;
+        margin-right: 20px;
+        cursor: pointer;
+
+    }
+
+    .jenis_container input[type='radio']:checked+label {
+        background-color: #01cc65;
+        color: white;
+    }
+
+    .jenis_container input[type='radio']:checked+label:before {
+        height: 10px;
+        width: 10px;
+        border: 1px solid white;
+        background-color: #01cc65;
+    }
+
+    .s_product_text p {
+        margin-bottom: 5px;
+    }
+
+    .nice-select {
+        display: none !important;
+    }
+
+    select {
+        display: block !important;
+    }
+
+    .select2 {
+        width: 100% !important;
+    }
+</style>
+
 @endsection
 
 @section('content')
 
-<div class="container single_product_container">
-    <div class="row">
-        <div class="col">
-
-            <!-- Breadcrumbs -->
-
-            <div class="breadcrumbs d-flex flex-row align-items-center">
-                <ul>
-                    <li><a href="{{url('')}}">Home</a></li>
-                    <li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>
-					Tiket Iwan Fals </a></li>
-                </ul>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-7">
-            <div class="single_product_pics">
-                <div class="row">
-                    <div class="col-lg-3 thumbnails_col order-lg-1 order-2">
-                        <div class="single_product_thumbnails">
-                            <ul>
-                                <li class="active"><img src="{{asset('public/image/test_konser.jpeg')}}" alt=""
-                                        data-image="{{asset('public/image/test_konser.jpeg')}}"></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-9 image_col order-lg-2 order-1">
-                        <div class="single_product_image">
-                            <div class="single_product_image_background"
-                                style="background-image:url({{asset('public/image/test_konser.jpeg')}})"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-5">
-            <div class="product_details">
-                <div class="product_details_title">
-                    <h2>Pocket cotton sweatshirt</h2>
-                    <p>Nam tempus turpis at metus scelerisque placerat nulla deumantos solicitud felis. Pellentesque
-                        diam dolor, elementum etos lobortis des mollis ut...</p>
-                </div>
-                <div class="free_delivery d-flex flex-row align-items-center justify-content-center">
-                    <span class="ti-truck"></span><span>Instant Order</span>
-                </div>
-                <div class="original_price">Rp. 45.000</div>
-                <div class="product_price">Rp. 35.000</div>
-                <ul class="star_rating">
-                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                    <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                </ul>
-          
-				<div class="free_delivery d-flex flex-row align-items-center justify-content-center bg-primary text-white" style="cursor:pointer;">
-                    <span class="ti-ticket"></span><span>Pesan Tikcet</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-
-<div class="tabs_section_container">
-
+<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
     <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="tabs_container">
-                    <ul
-                        class="tabs d-flex flex-sm-row flex-column align-items-left align-items-md-center justify-content-center">
-                        <li class="tab active" data-active-tab="tab_1"><span>Description</span></li>
-                        <li class="tab" data-active-tab="tab_2"><span>Tanggal</span></li>
-                        <li class="tab" data-active-tab="tab_3"><span>Reviews (2)</span></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-
-                <!-- Tab Description -->
-
-                <div id="tab_1" class="tab_container active">
-                    <div class="row">
-                        <div class="col-lg-5 desc_col">
-                            <div class="tab_title">
-                                <h4>Description</h4>
-                            </div>
-                            <div class="tab_text_block">
-                                <h2>Pocket cotton sweatshirt</h2>
-                                <p>Nam tempus turpis at metus scelerisque placerat nulla deumantos solicitud felis.
-                                    Pellentesque diam dolor, elementum etos lobortis des mollis ut...</p>
-                            </div>
-
-                        </div>
-                        <div class="col-lg-5 offset-lg-2 desc_col">
-                            <div class="tab_image">
-                                <img src="{{asset('public/image/test_konser.jpeg')}}" alt="">
-                            </div>
-                           
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tab Additional Info -->
-
-                <div id="tab_2" class="tab_container">
-                    <div class="row">
-                        <div class="col additional_info_col">
-                            <div class="tab_title additional_info_title">
-                                <h4>Informasi Jadwal</h4>
-                            </div>
-                            <p>TANGGAL MULAI:<span> 12 Sept 2022 </span></p>
-                            <p>TANGGAL BERAKHIR:<span> 13 Sept 2022 </span></p>
-                            <p>JAM:<span> 12:00 - 14.00 </span></p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tab Reviews -->
-
-                <div id="tab_3" class="tab_container">
-                    <div class="row">
-
-                        <!-- User Reviews -->
-
-                        <div class="col-lg-6 reviews_col">
-                            <div class="tab_title reviews_title">
-                                <h4>Reviews (2)</h4>
-                            </div>
-
-                            <!-- User Review -->
-
-                            <div class="user_review_container d-flex flex-column flex-sm-row">
-                                <div class="user">
-                                    <div class="user_pic"></div>
-                                    <div class="user_rating">
-                                        <ul class="star_rating">
-                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                            <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="review">
-                                    <div class="review_date">27 Aug 2016</div>
-                                    <div class="user_name">Brandon William</div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.</p>
-                                </div>
-                            </div>
-
-                            <!-- User Review -->
-
-                            <div class="user_review_container d-flex flex-column flex-sm-row">
-                                <div class="user">
-                                    <div class="user_pic"></div>
-                                    <div class="user_rating">
-                                        <ul class="star_rating">
-                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                            <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="review">
-                                    <div class="review_date">27 Aug 2016</div>
-                                    <div class="user_name">Brandon William</div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Add Review -->
-
-                        <div class="col-lg-6 add_review_col">
-
-                            <div class="add_review">
-                                <form id="review_form" action="post">
-                                    <div>
-                                        <h1>Add Review</h1>
-                                        <input id="review_name" class="form_input input_name" type="text" name="name"
-                                            placeholder="Name*" required="required" data-error="Name is required.">
-                                        <input id="review_email" class="form_input input_email" type="email"
-                                            name="email" placeholder="Email*" required="required"
-                                            data-error="Valid email is required.">
-                                    </div>
-                                    <div>
-                                        <h1>Your Rating:</h1>
-                                        <ul class="user_star_rating">
-                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                            <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                                        </ul>
-                                        <textarea id="review_message" class="input_review" name="message"
-                                            placeholder="Your Review" rows="4" required=""
-                                            data-error="Please, leave us a review."></textarea>
-                                    </div>
-                                    <div class="text-left text-sm-right">
-                                        <button id="review_submit" type="submit"
-                                            class="red_button review_submit_btn trans_300"
-                                            value="Submit">submit</button>
-                                    </div>
-                                </form>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Event Details</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="{{url('')}}">Home<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="#">Event Details</a>
+                </nav>
             </div>
         </div>
     </div>
+</section>
+<!-- End Banner Area -->
 
+<!--================Single Product Area =================-->
+<div class="product_image_area">
+    <div class="container">
+        <div class="row s_product_inner">
+            <div class="col-lg-6">
+                <div class="s_Product_carousel">
+
+                    @foreach($event->foto_event as $foto)
+                    <div class="single-prd-item">
+                        <img class="img-fluid" src="{{asset('public/image/banner_event/'.$foto->foto_event)}}" alt="">
+                    </div>
+                    @endforeach
+
+                </div>
+            </div>
+            <div class="col-lg-5 offset-lg-1">
+                <div class="s_product_text">
+                    <h3>{{$event->nama_event}}</h3>
+                    <h2 class="harga_ticket">-</h2>
+                    <ul class="list">
+                        <li><a href="#"><span>Bentuk_Kegiatan</span> &nbsp &nbsp : {{$event->bentuk_kegiatan}}</a></li>
+                        <li><a href="#"><span>Kategori Event</span> &nbsp &nbsp : {{$event->kategori_event}}</a></li>
+                        <li><a href="#"><span>Type Event</span> &nbsp &nbsp : {{$event->type_event}}</a></li>
+                    </ul>
+
+
+                    <div class="jenis_container row mb-2 mt-3">
+
+                        @foreach($event->jenis_ticket as $jt => $jenis)
+                        <div class="col-md-3 mb-1">
+                            <input type="radio" {{$jt == 0 ? 'checked':''}} name="jenis" value="{{$jenis->id}}"
+                                onChange="gantiHarga(this)" harga="@currency($jenis->harga)" id="jt-{{$jt}}">
+                            <label for="jt-{{$jt}}">{{$jenis->jenis_ticket}}</label>
+                        </div>
+                        @endforeach
+
+                    </div>
+
+
+                    <p>{{$event->deskripsi}}.</p>
+
+
+                    <div class="card_area d-flex align-items-center">
+                        <button type="button" class="primary-btn" onclick="pesanTiket()" style="border:none;"> <i
+                                class="ti ti-ticket"></i> Beli Tiket</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<!--================End Single Product Area =================-->
+
+<!--================Product Description Area =================-->
+<section class="product_description_area">
+    <div class="container">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                    aria-selected="true">Description</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                    aria-controls="profile" aria-selected="false">Jadwal</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab"
+                    aria-controls="review" aria-selected="false">Lokasi</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <p>
+                    {{$event->deskripsi}}
+                </p>
+
+            </div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h5>Tanggal</h5>
+                                </td>
+                                <td>
+                                    <h5> {{$event->tanggal_mulai->format('d-m-Y')}} sd
+                                        {{$event->tanggal_berakhir->format('d-m-Y')}} </h5>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h5>Jam</h5>
+                                </td>
+                                <td>
+                                    <h5>{{$event->jam_mulai}} sd {{$event->jam_berakhir}}</h5>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="total_rate">
+                            <div id='map' style='width: 100%; height: 400px;'
+                                class="{{$event->latitude === null ? 'd-none' : '' }}"></div>
+                        </div>
+                        <div class="review_list">
+
+                            <a target="_blank"
+                                href="https://www.google.com/maps/search/?api=1&query={{$event->latitude.','.$event->longitude}}">Buka
+                                di aplikasi</a>
+
+                            <p>
+                                {{$event->lokasi}}
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Product Description Area =================-->
+
+<!-- Modal -->
+<div class="modal fade fade" id="md-pesan" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Pesan Ticket</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{url('pesanticket/'.$event->id)}}" method="post">
+
+                <div class="modal-body">
+                    @csrf
+                    <input type="text" class="d-none" name="jenis_ticket" value="{{ $event->jenis_ticket[0]->id }}">
+
+                    <div class="form-group">
+                        <label for="">Nama</label>
+                        <input type="text" class="form-control" name="nama" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Email</label>
+                        <input type="email" class="form-control" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">No Whatsapp</label>
+                        <input type="text" class="form-control" name="no_hp" required>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="">Provinsi</label>
+                        <select name="provinsi" id="" class="form-control select2">
+                            <option disabled selected>Pilih Provinsi</option>
+                            @foreach($provinsi as $p)
+                            <option value="{{$p->id}}">{{$p->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Kota</label>
+                        <select name="kota" id="" class="form-control select2" disabled>
+                            <option disabled selected>Pilih Kota</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Alamat</label>
+                        <textarea name="alamat" class="form-control" required></textarea>
+                    </div>
+
+                    <hr />
+
+                    <div class="form-group">
+                        <label for="">Jumlah Tiket yang dipesan</label>
+                        <input type="number" name="total_ticket" class="form-control" required>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Pesan</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
 
 @endsection
 
 @section('js')
+<script src="{{asset('public/karma-master/js/select2.min.js')}}"></script>
+
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkdyai5-p_kXTroX-gSz_mz-xeQ8Ht1iY&callback=initialize"
+    type="text/javascript"></script>
+
+<script>
+    $(document).ready(() => {
+        let harga = $("[name='jenis']:checked").attr('harga')
+        $(".harga_ticket").html(harga)
+        $("[name='provinsi']").select2({
+            dropdownParent: $("#md-pesan .modal-content")
+        })
+        $("[name='kota']").select2({
+            dropdownParent: $("#md-pesan .modal-content")
+        })
+    })
+
+    function gantiHarga(el) {
+        $(".harga_ticket").html(`${$(el).attr('harga')}`)
+        $('[name="jenis_ticket"]').val($(el).val())
+    }
+
+    function pesanTiket() {
+        $("#md-pesan").modal('show')
+    }
+
+    $("[name='provinsi']").on('change', () => {
+        let provinsi = $("[name='provinsi']").val()
+        axios.get(`{{url('getkota')}}/${provinsi}`)
+            .then(res => {
+                $("[name='kota']").empty()
+                $("[name='kota']").prop('disabled', false)
+                res.data.forEach((kota) => {
+                    $("[name='kota']").append(`
+					<option value="${kota.name}" >${kota.name}</option>
+				`)
+                })
+            })
+    })
 
 
-<script src="{{asset('public/coloshop/plugins/jquery-ui-1.12.1.custom/jquery-ui.js')}}"></script>
-<script src="{{asset('public/coloshop/js/single_custom.js')}}"></script>
+    function initialize() {
+        var propertiPeta = {
+            center: new google.maps.LatLng(-8.648782419411326, 116.32478714990327),
+            zoom: 12,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
 
+        var peta = new google.maps.Map(document.getElementById("map"), propertiPeta);
+
+        var marker = new google.maps.Marker({
+            map: peta,
+            position: new google.maps.LatLng(-8.648782419411326, 116.32478714990327)
+        });
+
+
+    }
+</script>
 @endsection
