@@ -166,7 +166,35 @@
 					</div>
 				</div>
 				<div class="row">
-					
+				
+				@foreach($events as $event)
+					@if(!$event->jenis_ticket->isEmpty())
+
+					<!-- single product -->
+					<div class="col-lg-3 col-md-6 col-6">
+						<div class="single-product  border card">
+							<img style="height:253px;" class="img-fluid" src="{{asset('public/image/banner_event/'.$event->foto_event[0]->foto_event)}}" alt="">
+							<div class="product-details px-2">
+								<h6> {{$event->nama_event}} </h6>
+								<div class="price">
+									<h6 class="@if($event->bentuk_kegiatan == 'offline') bg-success @elseif($event->bentuk_kegiatan == 'online') bg-primary @else bg-warning @endif text-white" >
+										{{$event->bentuk_kegiatan}}</h6>
+									<h6 class="l-through">{{$event->tanggal_mulai->format('d/m/Y')}}</h6>
+								</div>
+								<div class="prd-bottom">
+
+									<a href="{{url('pesanticket/'.$event->id)}}" class="social-info">
+										<span class="ti-ticket"></span>
+										<p class="hover-text">Beli Ticket</p>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					@endif
+					@endforeach
+
 				</div>
 			</div>
 		</div>
