@@ -17,12 +17,15 @@
                     <ul class="nav navbar-nav menu_nav ml-auto">
                         <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="contact.html">About</a></li>
+                        <li class="nav-item">
+                            <a href="{{url('login')}}" class="nav-link"><span class="ti-user"></span></a>
+                        </li>
                     </ul>
-                    <ul class="nav navbar-nav navbar-right">
+                    <!-- <ul class="nav navbar-nav navbar-right">
                         <li class="nav-item">
                             <a href="{{url('login')}}" class="cart"><span class="ti-user"></span></a>
                         </li>
-                    </ul>
+                    </ul> -->
                 </div>
             </div>
         </nav>
