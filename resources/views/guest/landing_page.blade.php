@@ -136,6 +136,7 @@
 
 					<!-- single product -->
 					<div class="col-lg-3 col-md-6 col-6">
+						<a href="{{url('pesanticket/'.$event->id)}}">
 						<div class="single-product  border card">
 							<img class="img-fluid" src="{{asset('public/image/banner_event/'.$event->foto_event[0]->foto_event)}}" alt="">
 							<div class="product-details px-2">
@@ -154,6 +155,7 @@
 								</div>
 							</div>
 						</div>
+						</a>
 					</div>
 
 					@endif
@@ -182,6 +184,7 @@
 
 					<!-- single product -->
 					<div class="col-lg-3 col-md-6 col-6">
+						<a href="{{url('pesanticket/'.$event->id)}}">
 						<div class="single-product  border card">
 							<img class="img-fluid" src="{{asset('public/image/banner_event/'.$event->foto_event[0]->foto_event)}}" alt="">
 							<div class="product-details px-2">
@@ -200,11 +203,11 @@
 								</div>
 							</div>
 						</div>
+						</a>
 					</div>
 
 					@endif
 					@endforeach
-
 				</div>
 			</div>
 		</div>
