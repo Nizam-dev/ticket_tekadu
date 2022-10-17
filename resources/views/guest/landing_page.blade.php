@@ -8,6 +8,16 @@
 	.single-product{
 		margin-bottom :20px;
 	}
+	.owl-carousel .owl-item img{
+			height : 253px;
+		}
+	@media (max-width: 768px) { 
+		.owl-carousel .owl-item img{
+			height : 153px;
+		}
+	 }
+	
+
 </style>
 @endsection
 
@@ -127,7 +137,7 @@
 					<!-- single product -->
 					<div class="col-lg-3 col-md-6 col-6">
 						<div class="single-product  border card">
-							<img style="height:253px;" class="img-fluid" src="{{asset('public/image/banner_event/'.$event->foto_event[0]->foto_event)}}" alt="">
+							<img class="img-fluid" src="{{asset('public/image/banner_event/'.$event->foto_event[0]->foto_event)}}" alt="">
 							<div class="product-details px-2">
 								<h6> {{$event->nama_event}} </h6>
 								<div class="price">
@@ -173,7 +183,7 @@
 					<!-- single product -->
 					<div class="col-lg-3 col-md-6 col-6">
 						<div class="single-product  border card">
-							<img style="height:253px;" class="img-fluid" src="{{asset('public/image/banner_event/'.$event->foto_event[0]->foto_event)}}" alt="">
+							<img class="img-fluid" src="{{asset('public/image/banner_event/'.$event->foto_event[0]->foto_event)}}" alt="">
 							<div class="product-details px-2">
 								<h6> {{$event->nama_event}} </h6>
 								<div class="price">
