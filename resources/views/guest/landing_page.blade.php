@@ -87,7 +87,7 @@
 
 						<div class="col-3">
 							<div class="form-group">
-								<label for="">Tanggal</label>
+								<label for="">Tanggal Event</label>
 								<input type="date" name="" id="" class="form-control">
 							</div>
 						</div>
