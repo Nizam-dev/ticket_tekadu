@@ -53,7 +53,10 @@
                                         <img src="{{asset('public/image/bukti_pembayaran/'.$transaksi->foto_pembayaran)}}" style="border-radius:0;" alt="">
                                     </a>
                                 </td>
-                                <td></td>
+                                <td>
+                                    <a href="{{url('konfirmasipesanan/diterima/'.$transaksi->id)}}" class="btn btn-sm btn-success">Terima</a>
+                                    <a href="{{url('konfirmasipesanan/ditolak/'.$transaksi->id)}}" class="btn btn-sm btn-danger">Tolak</a>
+                                </td>
                             </tr>
                            @endforeach
 

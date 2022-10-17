@@ -11,7 +11,7 @@
 <!-- Layout styles -->
 <link rel="stylesheet" href="{{asset('public/template/assets/css/style.css')}}">
 <!-- End layout styles -->
-<link rel="shortcut icon" href="{{asset('public/template/assets/images/favicon.png')}}" />
+    <link rel="shortcut icon" href="{{asset('public/image/logo/logo-mini.png')}}" />
 
 <link rel="stylesheet" href="{{asset('public/template/assets/css/dataTables.bootstrap4.min.css')}}">
 <link rel="stylesheet" href="{{asset('public/template/assets/css/animate.min.css')}}">

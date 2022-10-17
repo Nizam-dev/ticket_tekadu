@@ -103,6 +103,7 @@
                     <h3>{{$event->nama_event}}</h3>
                     <h2 class="harga_ticket">-</h2>
                     <ul class="list">
+                        <li><a href="#"><span>Sisa Tiket</span> &nbsp &nbsp : <span id="sisa_ticket">0</span></a></li>
                         <li><a href="#"><span>Bentuk_Kegiatan</span> &nbsp &nbsp : {{$event->bentuk_kegiatan}}</a></li>
                         <li><a href="#"><span>Kategori Event</span> &nbsp &nbsp : {{$event->kategori_event}}</a></li>
                         <li><a href="#"><span>Type Event</span> &nbsp &nbsp : {{$event->type_event}}</a></li>
@@ -114,7 +115,7 @@
                         @foreach($event->jenis_ticket as $jt => $jenis)
                         <div class="col-md-3 mb-1">
                             <input type="radio" {{$jt == 0 ? 'checked':''}} name="jenis" value="{{$jenis->id}}"
-                                onChange="gantiHarga(this)" harga="@currency($jenis->harga)" id="jt-{{$jt}}">
+                                onChange="gantiHarga(this)" harga="@currency($jenis->harga)" sisa="{{$jenis->jumlah}}" id="jt-{{$jt}}">
                             <label for="jt-{{$jt}}">{{$jenis->jenis_ticket}}</label>
                         </div>
                         @endforeach
@@ -301,7 +302,9 @@
 <script>
     $(document).ready(() => {
         let harga = $("[name='jenis']:checked").attr('harga')
+        let sisa_tiket = $("[name='jenis']:checked").attr('sisa')
         $(".harga_ticket").html(harga)
+        $("#sisa_ticket").html(sisa_tiket)
         $("[name='provinsi']").select2({
             dropdownParent: $("#md-pesan .modal-content")
         })
@@ -313,6 +316,8 @@
     function gantiHarga(el) {
         $(".harga_ticket").html(`${$(el).attr('harga')}`)
         $('[name="jenis_ticket"]').val($(el).val())
+        $("#sisa_ticket").html(`${$(el).attr('sisa')}`)
+
     }
 
     function pesanTiket() {

@@ -28,7 +28,7 @@ Route::get('ticketkonfirmation',[App\Http\Controllers\TicketConfirmation::class,
 Route::get('konfirmasipembayaran/{kode}',[App\Http\Controllers\TicketConfirmation::class,'pembayaran']);
 Route::post('konfirmasipembayaran/{kode}',[App\Http\Controllers\TicketConfirmation::class,'konfirmasi_pembayaran']);
 
-Route::get('event/{nama_event}/{kode}',[App\Http\Controllers\TicketController::class,'index']);
+Route::get('ticket/{nama_event}/{kode}',[App\Http\Controllers\TicketController::class,'index']);
 
 
 Route::get('getkota/{id}',[App\Http\Controllers\KotaController::class,'kota']);
@@ -45,6 +45,8 @@ Route::middleware(['role:admin,staff'])->group(function () {
     Route::resource('kategorimanagement',App\Http\Controllers\Admin\KategoriEventController::class);
 
     Route::get('pesananticket',[App\Http\Controllers\Staff\PesananTicketController::class,'index']);
+    Route::get('konfirmasipesanan/diterima/{id}',[App\Http\Controllers\Staff\KonfirmasiPesananController::class,'diterima']);
+    Route::get('konfirmasipesanan/ditolak/{id}',[App\Http\Controllers\Staff\KonfirmasiPesananController::class,'ditolak']);
 
 });
 

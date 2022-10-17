@@ -17,5 +17,9 @@ class ticket extends Model
     'customer_id',
     'event_id',
    ];
+
+   public function event(){
+        return $this->belongsTo(event::class,'event_id');
+    }
             
 }

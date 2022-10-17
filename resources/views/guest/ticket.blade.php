@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Ticket</title>
+        
         <style>
             .cardWrap {
                 width: 27em;
@@ -14,12 +15,13 @@
             }
 
             .card {
-                background: linear-gradient(to bottom, #e84c3d 0%, #e84c3d 26%, #ecedef 26%, #ecedef 100%);
+                background: linear-gradient(to bottom, #3d98e8 0%, #3d90e8  26%, #ecedef 26%, #ecedef 100%);
                 height: 11em;
                 float: left;
                 position: relative;
                 padding: 1em;
-                margin-top: 100px;
+                margin-top: 30px;
+                margin-bottom: 30px;
             }
 
             .cardLeft {
@@ -111,37 +113,28 @@
                 position: relative;
                 width: 2em;
                 height: 1.5em;
-                background: #fff;
                 margin: 0 auto;
                 border-radius: 1em/0.6em;
                 z-index: 1;
             }
+            .eye img{
+                width: 35px;
+                margin-top: -7px;
+            }
 
-            .eye:before,
-            .eye:after {
-                content: "";
+            .kode img{
+                padding: 2px;
+                border: 1px solid black;
+                width: 75%;
+                margin: auto;
                 display: block;
-                position: absolute;
-                border-radius: 50%;
+            }
+            .kode p{
+                margin-top: 1px;
+                color: #a2aeae;
+                text-align: center;
             }
 
-            .eye:before {
-                width: 1em;
-                height: 1em;
-                background: #e84c3d;
-                z-index: 2;
-                left: 8px;
-                top: 4px;
-            }
-
-            .eye:after {
-                width: 0.5em;
-                height: 0.5em;
-                background: #fff;
-                z-index: 3;
-                left: 12px;
-                top: 8px;
-            }
 
             .number {
                 text-align: center;
@@ -159,40 +152,49 @@
                 color: #a2aeae;
             }
 
-            .barcode {
-                height: 2em;
-                width: 0;
-                margin: 1.2em 0 0 0.8em;
-                box-shadow: 1px 0 0 1px #343434, 5px 0 0 1px #343434, 10px 0 0 1px #343434, 11px 0 0 1px #343434, 15px 0 0 1px #343434, 18px 0 0 1px #343434, 22px 0 0 1px #343434, 23px 0 0 1px #343434, 26px 0 0 1px #343434, 30px 0 0 1px #343434, 35px 0 0 1px #343434, 37px 0 0 1px #343434, 41px 0 0 1px #343434, 44px 0 0 1px #343434, 47px 0 0 1px #343434, 51px 0 0 1px #343434, 56px 0 0 1px #343434, 59px 0 0 1px #343434, 64px 0 0 1px #343434, 68px 0 0 1px #343434, 72px 0 0 1px #343434, 74px 0 0 1px #343434, 77px 0 0 1px #343434, 81px 0 0 1px #343434;
+            .mb-5{
+                margin-bottom : 15px;
             }
         </style>
     </head>
 
     <body>
-        <div class="cardWrap">
+
+       @foreach($tickets as $tiket)
+
+       <div class="cardWrap">
             <div class="card cardLeft">
-                <h1>Startup <span>Cinema</span></h1>
+                <h1>Ticket <span>Tekadu</span></h1>
                 <div class="title">
-                    <h2>How I met your Mother</h2><span>movie</span>
+                    <h2> {{$tiket->event->nama_event}} </h2><span>nama event</span>
                 </div>
                 <div class="name">
-                    <h2>Vladimir Kudinov</h2><span>name</span>
+                    <h2> </h2><span> </span>
                 </div>
                 <div class="seat">
-                    <h2>156</h2><span>seat</span>
+                    <h2>{{$tiket->event->tanggal_mulai->format('d M Y')}}</h2><span>Tanggal</span>
                 </div>
                 <div class="time">
-                    <h2>12:00</h2><span>time</span>
+                    <h2>{{ substr_replace($tiket->event->jam_mulai,'',5,7) }}</h2><span>Jam</span>
                 </div>
             </div>
             <div class="card cardRight">
-                <div class="eye"></div>
-                <div class="number">
-                    <h3></h3><span>VIP</span>
+                <div class="eye">
+                    <img src="{{asset('public/image/logo-ticket.png')}}" alt="" srcset="">
                 </div>
+                <div class="number">
+                    <h3></h3><span>{{$tiket->type_ticket}}</span>
+                </div>
+
+                <div class="kode">
+                    <img src="{{asset('public/image/qrcode/'.$tiket->kode_ticket.'.svg')}}" alt="" srcset="">
+                </div>
+
                 
             </div>
         </div>
+
+       @endforeach
 
 
     </body>

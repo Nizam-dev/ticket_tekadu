@@ -27,6 +27,7 @@ class User extends Authenticatable
         'nama_vendor',
         'role',
         'alamat',
+        'provinsi',
         'kota',
         'instansi',
     ];

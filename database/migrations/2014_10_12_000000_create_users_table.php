@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('no_hp')->nullable();
             $table->string('alamat')->nullable();
+            $table->string('provinsi')->nullable();
             $table->string('kota')->nullable();
             $table->string('instansi')->nullable();
             $table->string('foto')->nullable()->default('profil-default.png');
