@@ -22,6 +22,7 @@ Route::post('login',[App\Http\Controllers\LoginController::class,'login']);
 
 // Guest
 Route::get('/',[App\Http\Controllers\LandingPageController::class,'index']);
+Route::get('about',[App\Http\Controllers\LandingPageController::class,'about']);
 Route::get('pesanticket/{id}',[App\Http\Controllers\PesanTicketController::class,'show']);
 Route::post('pesanticket/{id}',[App\Http\Controllers\PesanTicketController::class,'pesan_ticket']);
 Route::get('ticketkonfirmation',[App\Http\Controllers\TicketConfirmation::class,'show']);
