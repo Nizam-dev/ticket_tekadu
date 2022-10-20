@@ -9,7 +9,7 @@ class history_scan_ticket extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'tikcet_id',
+        'ticket_id',
         'event_id',
         'tiket'
     ];

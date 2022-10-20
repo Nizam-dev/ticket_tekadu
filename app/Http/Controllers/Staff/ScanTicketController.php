@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\event;
 use App\Models\ticket;
+use App\Models\history_scan_ticket;
 use Carbon\Carbon;
 
 class ScanTicketController extends Controller
@@ -27,13 +28,55 @@ class ScanTicketController extends Controller
     public function update($id, Request $request)
     {
         $tiket = ticket::where('kode_ticket',$request->kode_ticket)
-        ->where('event_id',$id)->first();
+        ->where('event_id',$id)->with('history_scan')->first();
+        $event = event::find($id);
         if($tiket){
-            return response()->json([
-                'status'=>'success',
-                'data'=>$tiket,
-                'waktu'=> Carbon::now()
-            ]);
+
+            if($event->type_event == "berulang"){
+                $hs = history_scan_ticket::where('tiket',$request->kode_ticket)->whereDate('created_at',Carbon::now())->get();
+                if($hs->isEmpty()){
+                    history_scan_ticket::create([
+                        'tiket'=>$request->kode_ticket,
+                        'event_id'=>$id,
+                        'ticket_id'=>$tiket->id
+                    ]);
+        
+                    return response()->json([
+                        'status'=>'success',
+                        'data'=>$tiket,
+                        'waktu'=> Carbon::now()
+                    ]);
+                }else{
+                    return response()->json([
+                        'status'=>'duplikat',
+                        'data'=>$tiket,
+                        'waktu'=> Carbon::now()
+                    ]);
+                }
+            }else{
+
+                if(!$tiket->history_scan->isEmpty()){
+                    return response()->json([
+                        'status'=>'duplikat',
+                        'data'=>$tiket,
+                        'waktu'=> Carbon::now()
+                    ]);
+                }
+    
+                history_scan_ticket::create([
+                    'tiket'=>$request->kode_ticket,
+                    'event_id'=>$id,
+                    'ticket_id'=>$tiket->id
+                ]);
+    
+                return response()->json([
+                    'status'=>'success',
+                    'data'=>$tiket,
+                    'waktu'=> Carbon::now()
+                ]);
+
+            }
+
         }else{
             return response()->json([
                 'status'=>'failed',

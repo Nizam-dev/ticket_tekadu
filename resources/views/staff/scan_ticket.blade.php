@@ -117,10 +117,26 @@
                     </tr>
                 `)
                 playAudioSuccess()
-            }else{
+            }else if(res.data.status == "duplikat"){
+                $.notify({
+                    title: '<i  class="mdi  mdi mdi-window-close text-warning"> Failed </i>',
+                    content: 'Ticket duplikat',
+                    timeout: 2000,
+                });
+                $('.container_status').prepend(`
+                    <tr>
+                        <td> ${nid} </td>
+                        <td> <label class="badge badge-warning">Duplikat</label> </td>
+                        <td> ${tgl} </td>
+                    </tr>
+
+                `)
+                playAudioFailed()
+            }
+            else{
                 $.notify({
                     title: '<i  class="mdi  mdi mdi-window-close text-danger"> Failed </i>',
-                    content: 'Ticket gagal',
+                    content: 'Ticket Not Found',
                     timeout: 2000,
                 });
                 $('.container_status').prepend(`
