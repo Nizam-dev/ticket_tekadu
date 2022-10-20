@@ -55,7 +55,7 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$event->nama_event}}</td>
                                 <td>{{$event->type_event}}</td>
-                                <td>{{$event->deskripsi}}</td>
+                                <td>{{substr($event->deskripsi,0,10).'....'}}</td>
                                 <td>{{$event->tanggal_mulai->format('d/m/Y')}}</td>
                                 <td>{{$event->tanggal_berakhir->format('d/m/Y')}}</td>
                                 <td>{{substr_replace($event->jam_mulai,'',5,7).' - '.substr_replace($event->jam_berakhir,'',5,7)}}</td>
