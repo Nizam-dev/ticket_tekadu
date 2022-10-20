@@ -137,7 +137,7 @@
 
         setTimeout(() => {
             html5QrcodeScanner.resume()
-        }, 3000);
+        }, 2000);
         
     }
 
