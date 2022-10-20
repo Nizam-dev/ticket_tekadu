@@ -92,7 +92,7 @@
         html5QrcodeScanner.pause()
         setTimeout(() => {
             html5QrcodeScanner.resume()
-        }, 1500);
+        }, 2000);
     }
 
 
