@@ -341,7 +341,7 @@
 
     function initialize() {
         var propertiPeta = {
-            center: new google.maps.LatLng(-8.648782419411326, 116.32478714990327),
+            center: new google.maps.LatLng("{{$event->latitude}}", "{{$event->longitude}}"),
             zoom: 12,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
@@ -350,7 +350,7 @@
 
         var marker = new google.maps.Marker({
             map: peta,
-            position: new google.maps.LatLng(-8.648782419411326, 116.32478714990327)
+            position: new google.maps.LatLng("{{$event->latitude}}", "{{$event->longitude}}")
         });
 
 
