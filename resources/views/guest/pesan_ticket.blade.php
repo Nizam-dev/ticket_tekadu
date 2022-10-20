@@ -112,10 +112,10 @@
 
                     <div class="jenis_container row mb-2 mt-3">
 
-                        @foreach($event->jenis_ticket as $jt => $jenis)
+                        @foreach($event->jenis_ticket_sisa as $jt => $jenis)
                         <div class="col-md-3 mb-1">
                             <input type="radio" {{$jt == 0 ? 'checked':''}} name="jenis" value="{{$jenis->id}}"
-                                onChange="gantiHarga(this)" harga="@currency($jenis->harga)" sisa="{{$jenis->jumlah}}" id="jt-{{$jt}}">
+                                onChange="gantiHarga(this)" harga="@currency($jenis->harga)" sisa="{{$jenis->jumlah - $jenis->ticket_jenis_count}}" id="jt-{{$jt}}">
                             <label for="jt-{{$jt}}">{{$jenis->jenis_ticket}}</label>
                         </div>
                         @endforeach
@@ -228,7 +228,7 @@
 
                 <div class="modal-body">
                     @csrf
-                    <input type="text" class="d-none" name="jenis_ticket" value="{{ $event->jenis_ticket[0]->id }}">
+                    <input type="text" class="d-none" name="jenis_ticket" value="{{ $event->jenis_ticket_sisa[0]->id }}">
 
                     <div class="form-group">
                         <label for="">Nama</label>

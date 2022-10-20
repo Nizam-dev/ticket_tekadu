@@ -17,7 +17,7 @@ class PesanTicketController extends Controller
     public function show($id)
     {
         $provinsi = provinsi::all();
-        $event = event::where('id',$id)->with('foto_event')->with('jenis_ticket')->first();
+        $event = event::where('id',$id)->with('foto_event')->with('jenis_ticket_sisa')->first();
         return view('guest.pesan_ticket',compact('event','provinsi'));
     }
 
@@ -43,6 +43,7 @@ class PesanTicketController extends Controller
                 'status_pembayaran' => "belum bayar",
                 'customer_id' => $customer->id,
                 'event_id' =>$id ,
+                'jenis_ticket_id'=> $request->jenis_ticket,
             ]);
 
             // Kirim Email

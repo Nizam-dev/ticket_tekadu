@@ -16,6 +16,7 @@ class ticket extends Model
     'transaksi_id',
     'customer_id',
     'event_id',
+    'jenis_ticket_id',
    ];
 
    public function event(){

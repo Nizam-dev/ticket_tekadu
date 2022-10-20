@@ -29,6 +29,7 @@ class KonfirmasiPesananController extends Controller
                 'transaksi_id'=> $id,
                 'customer_id'=> $transaksi->customer_id,
                 'event_id'=> $transaksi->event_id,
+                'jenis_ticket_id'=> $transaksi->jenis_ticket_id,
             ]);
             QrCode::generate($kode_tiket, public_path('image/qrcode/'.$kode_tiket.'.svg') );
         }

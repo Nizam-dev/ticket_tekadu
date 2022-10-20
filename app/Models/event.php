@@ -34,6 +34,10 @@ class event extends Model
     	return $this->hasMany(jenis_ticket::class);
     }
 
+    public function jenis_ticket_sisa(){
+    	return $this->hasMany(jenis_ticket::class)->withCount('ticket_jenis');
+    }
+
     public function tiket(){
         return $this->hasMany(ticket::class);
     }

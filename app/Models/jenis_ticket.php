@@ -14,4 +14,8 @@ class jenis_ticket extends Model
         'jumlah',
         'event_id',
     ];
+
+    public function ticket_jenis(){
+    	return $this->hasMany(ticket::class);
+    }
 }
