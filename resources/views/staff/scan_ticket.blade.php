@@ -88,11 +88,8 @@
     async function onScanSuccess(decodedText, decodedResult) {
         $("#hass").val(decodedText)
         // $("#reader__dashboard_section_csr button:nth-child(2)").click()
-        await absen(decodedText)
         html5QrcodeScanner.pause()
-        setTimeout(() => {
-            html5QrcodeScanner.resume()
-        }, 2000);
+        await absen(decodedText)
     }
 
 
@@ -137,6 +134,10 @@
                 playAudioFailed()
             }
         })
+
+        setTimeout(() => {
+            html5QrcodeScanner.resume()
+        }, 3000);
         
     }
 
