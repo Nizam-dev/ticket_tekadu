@@ -56,9 +56,9 @@
 @section('js')
 
 
-<script src="{{asset('public/template/assets/vendors/chart.js/Chart.min.js')}}"></script>
+<!-- <script src="{{asset('public/template/assets/vendors/chart.js/Chart.min.js')}}"></script>
 <script src="{{asset('public/template/assets/js/off-canvas.js')}}"></script>
-<script src="{{asset('public/template/assets/js/misc.js')}}"></script>
+<script src="{{asset('public/template/assets/js/misc.js')}}"></script> -->
 <script src="{{asset('public/template/assets/vendors/jquery-circle-progress/js/circle-progress.min.js')}}"></script>
 <script src="{{asset('public/template/assets/js/dashboard2.js')}}"></script>
 
