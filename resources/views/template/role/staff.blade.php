@@ -1,5 +1,5 @@
-<li class="nav-item">
-    <a class="nav-link" href="">
+<li class="nav-item {{request()->is('dashboard') ? 'active' : ''}}">
+    <a class="nav-link" href="{{url('dashboard')}}">
         <span class="icon-bg"><i class="mdi mdi-view-dashboard  menu-icon"></i></span>
         <span class="menu-title">Dashboard</span>
     </a>

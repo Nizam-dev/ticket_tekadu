@@ -52,6 +52,8 @@ Route::middleware(['role:admin,staff'])->group(function () {
 });
 
 Route::middleware(['role:admin,staff,owner'])->group(function () {
+    Route::get('dashboard',[App\Http\Controllers\DashboardController::class,'index']);
+
     Route::resource('scanticket',App\Http\Controllers\Staff\ScanTicketController::class);
     Route::resource('eventmanagement',App\Http\Controllers\Staff\EventController::class);
     Route::get('jenisticketmanagement',[App\Http\Controllers\Staff\BuatTicketController::class,'index']);

@@ -6,6 +6,10 @@
 
 @section('content')
 
+<div class="page-header ml-0">
+    Scan Tiket
+</div>
+
 <div class="row  animate__animated animate__backInRight animate__faster">
     <div class="col-md-12">
         <div class="form-group row">

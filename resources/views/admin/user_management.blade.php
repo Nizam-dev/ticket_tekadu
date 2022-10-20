@@ -225,7 +225,7 @@
                             <label class="col-sm-3 col-form-label">Provinsi</label>
                             <div class="col-sm-9">
                                 <select name="provinsi" id="" class="form-control">
-                                    <option disabled selected>Pilih Provinsi</option>
+                                    <option disabled>Pilih Provinsi</option>
                                     @foreach($provinsis as $provinsi)
                                     <option value="{{$provinsi->id}}">{{$provinsi->name}}</option>
                                     @endforeach

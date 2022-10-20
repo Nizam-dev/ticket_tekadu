@@ -11,7 +11,7 @@ class LoginController extends Controller
     public function index()
     {
         if(Auth::check()){
-            return redirect('/scanticket');
+            return redirect('/dashboard');
         }
         return view("login");
     }
@@ -33,9 +33,9 @@ class LoginController extends Controller
         }
         if(Auth::attempt($login)){
             if(auth()->user()->role == "staff"){
-                return redirect('scanticket');
+                return redirect('dashboard');
             }
-            return redirect('scanticket');
+            return redirect('dashboard');
 
         }else{
             return redirect()->back()->with('failed','Password Salah');

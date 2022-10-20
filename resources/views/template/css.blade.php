@@ -23,4 +23,6 @@
 
 <link rel="stylesheet" href="{{asset('public/template/assets/css/bootstrap-select.css')}}" />
 
+
+
 @yield('css')
