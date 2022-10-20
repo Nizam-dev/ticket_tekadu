@@ -34,4 +34,12 @@ class event extends Model
     	return $this->hasMany(jenis_ticket::class);
     }
 
+    public function tiket(){
+        return $this->hasMany(ticket::class);
+    }
+
+    public function scan_tiket(){
+        return $this->hasMany(history_scan_ticket::class);
+    }
+
 }
