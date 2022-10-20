@@ -125,7 +125,7 @@
                 });
                 $('.container_status').prepend(`
                     <tr>
-                        <td> ${nid} </td>
+                        <td> ${nid.length > 7 ? nid.substring(0,7)+'...':nid} </td>
                         <td> <label class="badge badge-danger">Not Found</label> </td>
                         <td> ${tgl} </td>
                     </tr>
